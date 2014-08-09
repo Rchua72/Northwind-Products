@@ -1,0 +1,100 @@
+﻿@model Northwind.Data.ViewModels.ProductsViewModel
+
+@{
+    ViewBag.Title = "Edit product";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h2>EDIT PRODUCT</h2>
+        </div>
+    </div>
+    if (ViewBag.EditError != null && (bool)ViewBag.EditError == true)
+    {    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+    </div>
+    }
+    else if (ViewBag.EditSuccess != null && (bool)ViewBag.EditSuccess == true)
+    {    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Changes have been saved to the database.
+            </div>
+        </div>
+    </div>
+    }
+    <div class="row">
+        <div class="form-horizontal">
+            @Html.HiddenFor(model => model.ID)
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "productNameText" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Supplier, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SelectedSupplierValue, new SelectList(Model.Suppliers, "SupplierID", "CompanyName"), "Please select a supplier..")
+                    @Html.ValidationMessageFor(model => model.ProductSupplier.SupplierID)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SelectedCategoryValue, new SelectList(Model.Categories, "CategoryID", "CategoryName"), "Please select a category..")
+                    @Html.ValidationMessageFor(model => model.ProductCategory.CategoryID)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitPrice, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UnitPrice)
+                    @Html.ValidationMessageFor(model => model.UnitPrice)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitsInStock, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UnitsInStock)
+                    @Html.ValidationMessageFor(model => model.UnitsInStock)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitsOnOrder, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UnitsOnOrder)
+                    @Html.ValidationMessageFor(model => model.UnitsOnOrder)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    </div>
+</div>

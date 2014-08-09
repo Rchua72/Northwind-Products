@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Northwind.Data
+{
+    public class CategoriesRepository : GenericRepository<Category>
+    {
+        public CategoriesRepository(DbContext context) : base(context) { }
+    }
+}

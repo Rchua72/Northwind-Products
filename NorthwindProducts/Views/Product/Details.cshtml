@@ -1,0 +1,72 @@
+﻿@model Northwind.Data.ViewModels.ProductsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h2>PRODUCT DETAILS</h2>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-2 col-md-offset-4">
+        @Html.DisplayNameFor(model => model.Name):
+    </div>
+    <div class="col-md-4">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-4">
+        @Html.DisplayNameFor(model => model.Supplier):
+    </div>
+    <div class="col-md-3">
+        @Html.DisplayFor(model => model.Supplier)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-4">
+        @Html.DisplayNameFor(model => model.Category):
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.Category)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-4">
+        Unit Price:
+    </div>
+    <div class="col-md-3">
+        @Html.DisplayFor(model => model.UnitPrice)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-4">
+        Units in Stock:
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.UnitsInStock)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-4">
+        Units On Order:
+    </div>
+    <div class="col-md-3">
+        @Html.DisplayFor(model => model.UnitsOnOrder)
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-2 col-md-offset-4">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-default" })
+    </div>
+</div>
